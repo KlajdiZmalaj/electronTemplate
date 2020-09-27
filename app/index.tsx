@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
-import { history, configuredStore } from './store';
-import './app.global.css';
+import { createHashHistory } from 'history';
+import rootSaga from './sagas';
+import configureStore from './store';
 
-const store = configuredStore();
+const history = createHashHistory();
+const store = configureStore();
+store.runSaga(rootSaga);
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 

@@ -1,0 +1,17 @@
+.imgSelector {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.nav span {
+  cursor: pointer;
+}
+.left .file {
+  display: none;
+}
+.left {
+  width: 70%;
+}
+.right {
+  width: 30%;
+}
