@@ -11,7 +11,25 @@
 }
 .left {
   width: 70%;
+  height: 300px;
+  overflow: scroll;
 }
 .right {
   width: 30%;
+  height: 300px;
+  overflow: scroll;
+}
+.right img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.right li {
+  display: flex;
+  flex-flow: column;
+}
+.right span {
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
 }

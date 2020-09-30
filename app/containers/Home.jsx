@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 import './style.global.css';
 const userInfo = require('os').userInfo();
+import Image from './Image';
 
 const isImg = (file) => {
   if (
@@ -25,50 +26,18 @@ export default () => {
     setFiles(files);
   }, [filePath]);
   console.log('state filePath', filePath);
-  const fileList = files.map((item, i) => {
-    var fPath = path.join(filePath, item);
-    const promisify = require('util').promisify;
-    const lstat = promisify(require('fs').lstat);
-    let render = true;
-    async function isDir(path) {
-      try {
-        return (await lstat(path)).isDirectory();
-      } catch (e) {
-        return false;
-      }
-    }
-    console.log('fpath', fPath, render);
-    isDir(fPath).then((a) => {
-      render = a;
-      console.log('inside', a);
-    });
-
-    console.log('after', render);
-    return (
-      render && (
-        <li
-          key={i}
-          onClick={() => {
-            setPath(fPath);
-          }}
-        >
-          {item}
-        </li>
-      )
-    );
-  });
   return (
     <div className="imgSelector">
       <div className="left folders">
         <div className="nav">
           <span
             onClick={() => {
-              let arr = filePath.split('/');
+              let arr = filePath.split(path.sep);
               arr.pop();
-              if (arr.join('/').includes('C:')) {
-                setPath(arr.join('/'));
+              if (arr.join(path.sep).includes(userInfo.homedir)) {
+                setPath(arr.join(path.sep));
               } else {
-                setPath('C:');
+                setPath(userInfo.homedir);
               }
             }}
           >
@@ -76,23 +45,34 @@ export default () => {
           </span>
           {userInfo.username} Files on {filePath} <br />{' '}
         </div>
-        <ul>{fileList}</ul>
-      </div>
-      <div className="right imgs">
         <ul>
           {files.map((item, i) => {
+            var fPath = path.join(filePath, item);
+
+            const render =
+              fs.existsSync(fPath) && fs.lstatSync(fPath).isDirectory();
+            // console.log('exist ? ', fs.existsSync(fPath), render);
             return (
-              isImg(item) && (
+              render && (
                 <li
                   key={i}
                   onClick={() => {
-                    // setPath(fPath);
+                    setPath(fPath);
                   }}
                 >
                   {item}
                 </li>
               )
             );
+          })}
+        </ul>
+      </div>
+      <div className="right imgs">
+        <ul>
+          {files.map((item, i) => {
+            var fPath = path.join(filePath, item);
+
+            return isImg(item) && <Image key={i} item={item} fPath={fPath} />;
           })}
         </ul>
       </div>
