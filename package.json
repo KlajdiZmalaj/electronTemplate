@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "favia-app",
   "productName": "Favia Application",
   "version": "1.3.1",
   "description": "test app description",
@@ -99,54 +99,28 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate",
+      "owner": "faviaApp",
+      "repo": "faviaApp",
       "private": false
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
-  },
+  "repository": {},
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "name": "Favia app",
+    "email": "favia@gmail.com",
+    "url": "https://favia.org"
   },
   "contributors": [
     {
-      "name": "Vikram Rangaraj",
-      "email": "vikr01@icloud.com",
-      "url": "https://github.com/vikr01"
-    },
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    },
-    {
-      "name": "John Tran",
-      "email": "jptran318@gmail.com",
-      "url": "https://github.com/jooohhn"
+      "name": "Klajdiz7",
+      "email": "klajdizmalaj@icloud.com",
+      "url": "https://github.com/KlajdiZmalaj"
     }
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
-  },
-  "keywords": [
-    "electron",
-    "boilerplate",
-    "react",
-    "redux",
-    "typescript",
-    "ts",
-    "sass",
-    "webpack",
-    "hot",
-    "reload"
-  ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "bugs": {},
+  "keywords": [],
+  "homepage": "https://github.com/",
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {
@@ -306,7 +280,7 @@
     "yarn": ">=0.21.3"
   },
   "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
+    "url": "https://opencollective.com/"
   },
   "browserslist": [],
   "prettier": {

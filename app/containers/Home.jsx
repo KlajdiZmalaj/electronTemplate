@@ -29,9 +29,8 @@ const myTheme = {
 
 const isImg = (file) => {
   if (
-    file.includes('.png') ||
-    file.includes('.jpg') ||
-    file.includes('.jpeg')
+    file &&
+    (file.includes('.png') || file.includes('.jpg') || file.includes('.jpeg'))
   ) {
     return true;
   } else {
@@ -41,12 +40,20 @@ const isImg = (file) => {
 
 export default () => {
   const [files, setFiles] = useState([]);
+  const [images, setImages] = useState([]);
   const [filePath, setPath] = useState(userInfo.homedir);
   const [slice, setSlice] = useState(20);
   const imageEditor = React.createRef();
 
   useEffect(() => {
     const files = fs.readdirSync(filePath);
+    let imagesArr = [];
+    files.forEach((file) => {
+      if (isImg(file)) {
+        imagesArr.push(file);
+      }
+    });
+    setImages(imagesArr);
     setFiles(files);
   }, [filePath]);
 
@@ -146,7 +153,7 @@ export default () => {
       <div className="right imgs">
         <ul>
           <InfiniteScroll
-            dataLength={files.slice(0, slice).length}
+            dataLength={images.slice(0, slice).length}
             next={fetchData}
             hasMore={true}
             loader={<h4>Loading...</h4>}
@@ -156,18 +163,11 @@ export default () => {
               </p>
             }
           >
-            {files.slice(0, slice).map((item, i) => {
+            {images.slice(0, slice).map((item, i) => {
               var fPath = path.join(filePath, item);
 
               return (
-                isImg(item) && (
-                  <Image
-                    loadImg={loadImg}
-                    key={item}
-                    item={item}
-                    fPath={fPath}
-                  />
-                )
+                <Image loadImg={loadImg} key={item} item={item} fPath={fPath} />
               );
             })}
           </InfiniteScroll>
