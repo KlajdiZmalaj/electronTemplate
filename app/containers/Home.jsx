@@ -93,7 +93,7 @@ export default () => {
 
     // let buff = new Buffer(dataUrl, 'base64');
     fs.writeFile(
-      `${userInfo.homedir + path.sep}result.png`,
+      `${userInfo.homedir + path.sep + 'Desktop' + path.sep}result.png`,
       dataUrl.replace(/^data:image\/png;base64,/, ''),
       'base64',
       function (err) {
@@ -101,15 +101,6 @@ export default () => {
         console.log('Results Received');
       }
     );
-    // downloader
-    //   .image({
-    //     url: dataUrl,
-    //     dest: userInfo.homedir,
-    //   })
-    //   .then(({ filename }) => {
-    //     console.log('Saved to', filename); // saved to /path/to/dest/image.jpg
-    //   })
-    //   .catch((err) => console.error(err));
   };
   return (
     <div className="imgSelector">

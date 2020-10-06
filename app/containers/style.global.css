@@ -35,8 +35,9 @@
   padding: 5px;
 }
 .down {
-  width: 100vw;
+  width: 1110px;
   height: calc(100vh - 340px);
+  min-height: 520px;
   display: flex;
   flex-flow: column;
 }
