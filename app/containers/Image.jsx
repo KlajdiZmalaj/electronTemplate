@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 const fs = require('fs');
+const path = require('path');
 
 function encode(input) {
   var keyStr =
@@ -32,7 +33,7 @@ function encode(input) {
   return output;
 }
 
-export default ({ fPath, item }) => {
+export default ({ fPath, item, loadImg }) => {
   const [url, setUrl] = useState('');
   fs.readFile(fPath, function (err, data) {
     // console.log('ca ka file img', data);
@@ -42,7 +43,7 @@ export default ({ fPath, item }) => {
   return (
     <li
       onClick={() => {
-        // setPath(fPath);
+        loadImg(fPath);
       }}
     >
       <img src={url} alt="" />
